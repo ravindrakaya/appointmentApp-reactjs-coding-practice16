@@ -74,23 +74,29 @@ class Appointments extends Component {
           <h1 className="card-heading">Add Appointment</h1>
           <div className="top-container">
             <form className="form-container" onSubmit={this.onClickAddBtn}>
-              <label className="form-title">TITLE</>
+              <label htmlFor="title" className="form-title">
+                Title
+              </label>
               <input
                 type="text"
                 className="input-field"
                 placeholder="Title"
                 value={title}
+                id="title"
                 onChange={this.onChangeTitle}
               />
-              <p className="form-title">DATE</p>
+              <label htmlFor="Date" className="form-title">
+                Date
+              </label>
               <input
                 type="date"
-                value="date"
+                value={date}
                 className="input-field"
                 onChange={this.onChangeDate}
+                id="Date"
               />
               <br />
-              <button type="submit" className="button">
+              <button  type="submit" className="button">
                 Add
               </button>
             </form>
@@ -103,25 +109,28 @@ class Appointments extends Component {
             </div>
           </div>
           <hr className="head-rise" />
-          <ul className="list-container">
+          <div className="list-container">
             <div className="appointment-star-container">
               <h1 className="list-container-heading">Appointments</h1>
               <button
                 type="button"
                 className="star-btn"
                 onClick={this.onClickStarBtn}
+                
               >
                 Starred
               </button>
             </div>
-            {filteredAppointmentList.map(eachItem => (
-              <AppointmentItem
-                key={eachItem.id}
-                appointmentDetails={eachItem}
-                toggleIsFavorite={this.toggleIsFavorite}
-              />
-            ))}
-          </ul>
+            <ul>
+              {filteredAppointmentList.map(eachItem => (
+                <AppointmentItem
+                  key={eachItem.id}
+                  appointmentDetails={eachItem}
+                  toggleIsFavorite={this.toggleIsFavorite}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     )
